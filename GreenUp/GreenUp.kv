@@ -1,23 +1,53 @@
 #:kivy 1.1.0
 
-<MenuScreen>:
+<HomeScreen>:
     BoxLayout:
-        Button:
-            text: 'Goto settings'
-            on_press: root.manager.current = 'settings'
-        Button:
-            background_color: [10,1,1,1]
-            text: 'Add Red'
-            font_size: 40
-            on_press: root.my_callback(self,1,'red')
-
-<SettingsScreen>:
-    BoxLayout:
-        Button:
-            background_color: [1,1,10,1]
-            text: 'Add Blue'
-            font_size: 40
-            on_press: root.my_callback(self,1,'blue')
-        Button:
-            text: 'Back to menu'
-            on_press: root.manager.current = 'menu'
+        orientation: 'vertical'
+        padding: [0,5,0,5]
+        spacing: 0
+        
+        Image:
+            source: "image\logo.jpg"
+        
+        Label:
+            text: "Hello"
+        
+        GridLayout:
+            cols: 2
+            rows: 2
+            padding: [10,0,10,0]
+            spacing: 0
+            Button:
+                background_color: [10,1,1,1]
+                text: 'Add Red'
+                font_size: 20
+            Button:
+                background_color: [10,1,1,1]
+                text: 'Add Red'
+                font_size: 20
+            Button:
+                background_color: [10,1,1,1]
+                text: 'Add Red'
+                font_size: 20
+            Button:
+                background_color: [10,1,1,1]
+                text: 'Add Red'
+                font_size: 20
+            
+        BoxLayout:
+            orientation: 'horizontal'
+            padding: [10,0,10,0]
+            spacing: 0
+            Button:
+                background_color: [10,1,1,1]
+                text: 'Add Red'
+                font_size: 20
+            Button:
+                background_color: [10,1,1,1]
+                text: 'Add Red'
+                font_size: 20
+            Button:
+                background_color: [10,1,1,1]
+                text: 'Add Red'
+                font_size: 20
+            
