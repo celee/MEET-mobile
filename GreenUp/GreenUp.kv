@@ -1,0 +1,38 @@
+#:kivy 1.1.0
+
+<MyWidget>
+    button1: btn1
+    button2: btn2
+    
+    GridLayout:
+        cols: 2
+        rows: 2
+        size: root.size
+        
+        Button:
+            id: btn1
+            background_color: [10,1,1,1]
+            text: 'Add Red'
+            font_size: 40
+            on_press: root.my_callback(self,1,'red')
+        
+        Button:
+            id: btn2
+            background_color: [1,1,10,1]
+            text: 'Add Blue'
+            font_size: 40
+            on_press: root.my_callback(self,1,'blue')
+            
+        Button:
+            id: btn3
+            background_color: [10,1,1,1]
+            text: 'Delete Red'
+            font_size: 40
+            on_press: root.my_callback(self,0,'red')
+        
+        Button:
+            id: btn4
+            background_color: [1,1,10,1]
+            text: 'Delete Blue'
+            font_size: 40
+            on_press: root.my_callback(self,0,'blue')

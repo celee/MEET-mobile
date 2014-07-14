@@ -1,0 +1,3 @@
+title=GreenUp
+author=Christina
+orientation=portrait
