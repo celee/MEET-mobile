@@ -1,8 +1,8 @@
 #:kivy 1.8.0
 
-<LoginScren>:
+<LoginScreen>:
     username: usr
-    password: psswd
+    password: passwd
     error: err
 
     canvas.before:
@@ -14,37 +14,51 @@
 
     BoxLayout:
         orientation: 'vertical'
-        padding: [0,5,0,5]
-        spacing: 0
+        padding: [0,20,0,20]
+        spacing: 5
         Image:
             source: "logo.jpg"
             size_hint: [1,1]
         Label:
             id: err
-            text: "Welcome, please enter your username and password to continue."
+            text: "Welcome"
+            color: [0,0,0,1]
+            size_hint: [1,0.5]
             font_size: 30
         GridLayout:
-            size_hint: [1,2]
-            cols = 2
-            rows = 2
+            size_hint: [1,3]
+            cols: 2
+            rows: 2
+            padding: [50,20,50,20]
+            spacing: 10
+            row_force_default: True
+            row_default_height: 40
             Label:
                 text: "Username"
-                font_size: 30
+                halign: "right"
+                font_size: 20
+                color: [0,0,0,1]
             TextInput:
                 id: usr
                 multiline: False
-            label:
+            Label:
                 text: "Password"
-                font_size: 30
+                halign: "right"
+                font_size: 20
+                color: [0,0,0,1]
             TextInput:
                 id: passwd
                 password: True
                 multiline: False
-        Button:
-            size_hint: [1,2.5]
-            text: 'Login'
-            font_size: 20
-            on_release: root.button_clicked()
+        AnchorLayout:
+            size_hint: [1,1]
+            Button:
+                size_hint_x: 0.3
+                text: 'Login'
+                font_size: 20
+                color: [0,0,0,1]
+                background_color: [1.5,1.5,1.5,1]
+                on_release: root.button_clicked()
 
 <HomeScreen>:
     canvas.before:
@@ -56,7 +70,7 @@
 
     BoxLayout:
         orientation: 'vertical'
-        padding: [0,5,0,5]
+        padding: [0,20,0,20]
         spacing: 0
 
         Image:
@@ -64,50 +78,63 @@
             size_hint: [1,1]
 
         Label:
-            text: "Hello, %s" % root.userDisplayName
+            text: "Hello, %s" % root.username
             font_size: 30
             size_hint: [1,0.5]
             color: [0,0,0,1]
             bold: True
+            canvas.before:
+                Color:
+                    rgba: 0.1,0.7,0.1,1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
         
         GridLayout:
             size_hint: [1,3]
             cols: 2
             rows: 2
             padding: [50,10,50,10]
-            spacing: 0
+            spacing: 10
             Button:
-                background_color: [10,1,1,1]
-                text: 'Add Red'
+                background_color: [1,10,1,1]
+                text: 'Water'
                 font_size: 20
+                color: [0,0,0,1]
             Button:
-                background_color: [10,1,1,1]
-                text: 'Add Red'
+                background_color: [1,10,1,1]
+                text: 'Electricity'
                 font_size: 20
+                color: [0,0,0,1]
             Button:
-                background_color: [10,1,1,1]
-                text: 'Add Red'
+                background_color: [1,10,1,1]
+                text: 'Fuel'
                 font_size: 20
+                color: [0,0,0,1]
             Button:
-                background_color: [10,1,1,1]
-                text: 'Add Red'
+                background_color: [1,10,1,1]
+                text: 'Recycling'
                 font_size: 20
+                color: [0,0,0,1]
             
         BoxLayout:
             size_hint: [1,1]
             orientation: 'horizontal'
             padding: [50,10,50,10]
-            spacing: 0
+            spacing: 10
             Button:
-                background_color: [10,1,1,1]
-                text: 'Add Red'
+                background_color: [1,10,1,1]
+                text: 'Achievements'
                 font_size: 20
+                color: [0,0,0,1]
             Button:
-                background_color: [10,1,1,1]
-                text: 'Add Red'
+                background_color: [1,10,1,1]
+                text: 'Profile'
                 font_size: 20
+                color: [0,0,0,1]
             Button:
-                background_color: [10,1,1,1]
-                text: 'Add Red'
+                background_color: [1,10,1,1]
+                text: 'Settings'
                 font_size: 20
+                color: [0,0,0,1]
             
