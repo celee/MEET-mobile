@@ -52,13 +52,22 @@
                 multiline: False
         AnchorLayout:
             size_hint: [1,1]
-            Button:
-                size_hint_x: 0.3
-                text: 'Login'
-                font_size: 20
-                color: [0,0,0,1]
-                background_color: [1.5,1.5,1.5,1]
-                on_release: root.button_clicked()
+            BoxLayout:
+                size_hint: [0.5, 1]
+                orientation: 'horizontal'
+                spacing: 20
+                Button:
+                    text: 'Login'
+                    font_size: 20
+                    color: [0,0,0,1]
+                    background_color: [1.5,1.5,1.5,1]
+                    on_release: root.login_button()
+                Button:
+                    text: 'Signup'
+                    font_size: 20
+                    color: [0,0,0,1]
+                    background_color: [1.5,1.5,1.5,1]
+                    on_release: root.signup_button()
 
 <HomeScreen>:
     canvas.before:
