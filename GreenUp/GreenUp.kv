@@ -17,7 +17,7 @@
         padding: [0,20,0,20]
         spacing: 5
         Image:
-            source: "logo.jpg"
+            source: "images/logo.jpg"
             size_hint: [1,1]
         Label:
             id: err
@@ -83,11 +83,11 @@
         spacing: 0
 
         Image:
-            source: "logo.jpg"
+            source: "images/logo.jpg"
             size_hint: [1,1]
 
         Label:
-            text: "Hello, %s" % root.username
+            text: "Hello, %s" % root.userDisplayName
             font_size: 30
             size_hint: [1,0.5]
             color: [0,0,0,1]
@@ -98,52 +98,233 @@
                 Rectangle:
                     pos: self.pos
                     size: self.size
-        
-        GridLayout:
+        AnchorLayout:
             size_hint: [1,3]
-            cols: 2
-            rows: 2
-            padding: [50,10,50,10]
-            spacing: 10
-            Button:
-                background_color: [1,10,1,1]
-                text: 'Water'
-                font_size: 20
-                color: [0,0,0,1]
-            Button:
-                background_color: [1,10,1,1]
-                text: 'Electricity'
-                font_size: 20
-                color: [0,0,0,1]
-            Button:
-                background_color: [1,10,1,1]
-                text: 'Fuel'
-                font_size: 20
-                color: [0,0,0,1]
-            Button:
-                background_color: [1,10,1,1]
-                text: 'Recycling'
-                font_size: 20
-                color: [0,0,0,1]
-            
-        BoxLayout:
+            anchor_x: 'center'
+            anchor_y: 'top'
+            GridLayout:
+                size_hint: [0.5, 1]
+                cols: 2
+                rows: 2
+                padding: [50,10,50,10]
+                spacing: 10
+                Button:
+                    background_normal: "images/waterUp.png"
+                    background_down: "images/waterDown.png"
+                    on_release: root.button_pressed('Water')
+                Button:
+                    background_normal: "images/electricUp.png"
+                    background_down: "images/electricDown.png"
+                    on_release: root.button_pressed('Electricity')
+                Button:
+                    background_normal: "images/fuelUp.png"
+                    background_down: "images/fuelDown.png"
+                    on_release: root.button_pressed('Fuel')
+                Button:
+                    background_normal: "images/recyclingUp.png"
+                    background_down: "images/recyclingDown.png"
+                    on_release: root.button_pressed('Recycling')
+                    
+        AnchorLayout:
+            size_hint: [1,1.5]
+            anchor_x: 'center'
+            anchor_y: 'bottom'
+            BoxLayout:
+                size_hint: [0.6, 1]
+                orientation: 'horizontal'
+                padding: [50,10,50,10]
+                spacing: 10
+                Button:
+                    background_normal: "images/achievementsUp.png"
+                    background_down: "images/achievementsDown.png"
+                    on_release: root.button_pressed('Achievements')
+                Button:
+                    background_normal: "images/profileUp.png"
+                    background_down: "images/profileDown.png"
+                    on_release: root.button_pressed('Profile')
+                Button:
+                    background_normal: "images/settingsUp.png"
+                    background_down: "images/settingsDown.png"
+                    on_release: root.button_pressed('Settings')
+                
+<SettingsScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [0,20,0,20]
+        spacing: 0
+
+        Image:
+            source: "images/logo.jpg"
             size_hint: [1,1]
-            orientation: 'horizontal'
-            padding: [50,10,50,10]
-            spacing: 10
-            Button:
-                background_color: [1,10,1,1]
-                text: 'Achievements'
-                font_size: 20
-                color: [0,0,0,1]
-            Button:
-                background_color: [1,10,1,1]
-                text: 'Profile'
-                font_size: 20
-                color: [0,0,0,1]
-            Button:
-                background_color: [1,10,1,1]
-                text: 'Settings'
-                font_size: 20
-                color: [0,0,0,1]
-            
+
+    AnchorLayout:
+        anchor_x: 'right'
+        anchor_y: 'bottom'
+        Button:
+            size_hint: 0.2, 0.2
+            background_normal: "images/homeUp.png"
+            background_down: "images/homeDown.png"
+            on_release: root.go_home()
+                
+<ProfileScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [0,20,0,20]
+        spacing: 0
+
+        Image:
+            source: "images/logo.jpg"
+            size_hint: [1,1]
+
+    AnchorLayout:
+        anchor_x: 'right'
+        anchor_y: 'bottom'
+        Button:
+            size_hint: 0.2, 0.2
+            background_normal: "images/homeUp.png"
+            background_down: "images/homeDown.png"
+            on_release: root.go_home()
+                
+<AchievementsScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [0,20,0,20]
+        spacing: 0
+
+        Image:
+            source: "images/logo.jpg"
+            size_hint: [1,1]
+
+    AnchorLayout:
+        anchor_x: 'right'
+        anchor_y: 'bottom'
+        Button:
+            size_hint: 0.2, 0.2
+            background_normal: "images/homeUp.png"
+            background_down: "images/homeDown.png"
+            on_release: root.go_home()
+                
+<WaterScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [0,20,0,20]
+        spacing: 0
+
+        Image:
+            source: "images/logo.jpg"
+            size_hint: [1,1]
+
+    AnchorLayout:
+        anchor_x: 'right'
+        anchor_y: 'bottom'
+        Button:
+            size_hint: 0.2, 0.2
+            background_normal: "images/homeUp.png"
+            background_down: "images/homeDown.png"
+            on_release: root.go_home()
+                
+<RecyclingScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [0,20,0,20]
+        spacing: 0
+
+        Image:
+            source: "images/logo.jpg"
+            size_hint: [1,1]
+
+    AnchorLayout:
+        anchor_x: 'right'
+        anchor_y: 'bottom'
+        Button:
+            size_hint: 0.2, 0.2
+            background_normal: "images/homeUp.png"
+            background_down: "images/homeDown.png"
+            on_release: root.go_home()
+                
+<ElectricityScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [0,20,0,20]
+        spacing: 0
+
+        Image:
+            source: "images/logo.jpg"
+            size_hint: [1,1]
+
+    AnchorLayout:
+        anchor_x: 'right'
+        anchor_y: 'bottom'
+        Button:
+            size_hint: 0.2, 0.2
+            background_normal: "images/homeUp.png"
+            background_down: "images/homeDown.png"
+            on_release: root.go_home()
+                
+<FuelScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [0,20,0,20]
+        spacing: 0
+
+        Image:
+            source: "images/logo.jpg"
+            size_hint: [1,1]
+
+    AnchorLayout:
+        anchor_x: 'right'
+        anchor_y: 'bottom'
+        Button:
+            size_hint: 0.2, 0.2
+            background_normal: "images/homeUp.png"
+            background_down: "images/homeDown.png"
+            on_release: root.go_home()
