@@ -1,0 +1,3 @@
+title=AidMe
+author=Christina
+orientation=portrait
