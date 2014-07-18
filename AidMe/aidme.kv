@@ -1,4 +1,4 @@
-#:kivy 1.8.0
+#:kivy 1.6.0
 
 <LoginScreen>:
     username: usr
@@ -102,7 +102,6 @@
             size_hint_y: None
             height: '48dp'
             padding: '4dp'  
-                
             ToggleButton:
                 text: 'Start' if self.state == 'normal' else 'Stop'
                 on_state: app.gps.start() if self.state == 'down' else app.gps.stop()
