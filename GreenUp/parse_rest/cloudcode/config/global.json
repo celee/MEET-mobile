@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "_default": {
+            "link": "parseapi"
+        },
+        "parseapi": {
+            "applicationId": "ns8i6BTFDzQHlx50ZDSXYhnaCLlyTyWnVTJyYkEm",
+            "masterKey": "66s744bHiGjcx17tcO97ZeZ5fqPyXF9deXhsOEtM"
+        }
+    },
+    "global": {
+        "parseVersion": "1.1.16"
+    }
+}

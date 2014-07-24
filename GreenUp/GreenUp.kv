@@ -4,48 +4,60 @@
     username: usr
     password: passwd
     error: err
-
+    
     canvas.before:
         Color:
             rgba: 1, 1, 1, 1
         Rectangle:
             pos: self.pos
             size: self.size
-
+            
     BoxLayout:
         orientation: 'vertical'
-        padding: [0,20,0,20]
+        padding: [0,10,0,30]
         spacing: 5
         Image:
             source: "images/logo.jpg"
-            size_hint: [1,1]
+            size_hint: [1,0.75]
         Label:
             id: err
             text: "Welcome"
             color: [0,0,0,1]
-            size_hint: [1,0.5]
-            font_size: 30
+            size_hint: [1,None]
+            height: 40
+            font_size: 25
+            bold: True
+            canvas.before:
+                Color:
+                    rgba: 0.1,0.7,0.1,1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
         GridLayout:
-            size_hint: [1,3]
+            size_hint: [1,2.5]
             cols: 2
             rows: 2
-            padding: [50,20,50,20]
             spacing: 10
+            padding: [20,20,20,20]
             row_force_default: True
-            row_default_height: 40
+            row_default_height: 30
             Label:
-                text: "Username"
+                text: "Username:"
                 halign: "right"
-                font_size: 20
                 color: [0,0,0,1]
+                size_hint_x: None
+                width: 100
+                font_size: 18
             TextInput:
                 id: usr
                 multiline: False
             Label:
-                text: "Password"
+                text: "Password:"
                 halign: "right"
-                font_size: 20
                 color: [0,0,0,1]
+                size_hint_x: None
+                width: 100
+                font_size: 18
             TextInput:
                 id: passwd
                 password: True
@@ -58,16 +70,20 @@
                 spacing: 20
                 Button:
                     text: 'Login'
-                    font_size: 20
                     color: [0,0,0,1]
                     background_color: [1.5,1.5,1.5,1]
                     on_release: root.login_button()
+                    size_hint_y: None
+                    height: 40
+                    font_size: 18
                 Button:
                     text: 'Signup'
-                    font_size: 20
                     color: [0,0,0,1]
                     background_color: [1.5,1.5,1.5,1]
                     on_release: root.signup_button()
+                    size_hint_y: None
+                    height: 40
+                    font_size: 18
 
 <HomeScreen>:
     canvas.before:
@@ -79,18 +95,18 @@
 
     BoxLayout:
         orientation: 'vertical'
-        padding: [0,20,0,20]
-        spacing: 0
+        padding: [0,10,0,30]
+        spacing: 5
 
         Image:
             source: "images/logo.jpg"
-            size_hint: [1,1]
-
+            size_hint: [1,0.75]
         Label:
             text: "Hello, %s" % root.userDisplayName
-            font_size: 30
-            size_hint: [1,0.5]
             color: [0,0,0,1]
+            size_hint: [1,None]
+            height: 40
+            font_size: 25
             bold: True
             canvas.before:
                 Color:
@@ -98,15 +114,16 @@
                 Rectangle:
                     pos: self.pos
                     size: self.size
+                    
         AnchorLayout:
-            size_hint: [1,3]
+            size_hint: [1,2.5]
             anchor_x: 'center'
             anchor_y: 'top'
             GridLayout:
-                size_hint: [0.5, 1]
+                size_hint: [0.75, 1]
                 cols: 2
                 rows: 2
-                padding: [50,10,50,10]
+                padding: [0,20,0,20]
                 spacing: 10
                 Button:
                     background_normal: "images/waterUp.png"
@@ -126,13 +143,13 @@
                     on_release: root.button_pressed('Recycling')
                     
         AnchorLayout:
-            size_hint: [1,1.5]
+            size_hint: [1,1]
             anchor_x: 'center'
             anchor_y: 'bottom'
             BoxLayout:
-                size_hint: [0.6, 1]
+                size_hint: [0.85, 1]
                 orientation: 'horizontal'
-                padding: [50,10,50,10]
+                padding: [0,10,0,10]
                 spacing: 10
                 Button:
                     background_normal: "images/achievementsUp.png"
@@ -146,8 +163,17 @@
                     background_normal: "images/settingsUp.png"
                     background_down: "images/settingsDown.png"
                     on_release: root.button_pressed('Settings')
-                
+
+<GreenUpBarGraph>
+    canvas.before:
+        Color:
+            rgba: 0, 1, 0, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
 <SettingsScreen>:
+    layoutRef: boxlay.__self__
     canvas.before:
         Color:
             rgba: 1, 1, 1, 1
@@ -156,22 +182,48 @@
             size: self.size
 
     BoxLayout:
+        id: boxlay
         orientation: 'vertical'
-        padding: [0,20,0,20]
-        spacing: 0
+        padding: [10,10,20,40]
+        spacing: 5
 
-        Image:
-            source: "images/logo.jpg"
+        BoxLayout:
             size_hint: [1,1]
+            orientation: 'horizontal'
+            Image:
+                source: "images/logo.jpg"
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    color: [0,0,0,1]
+                    text: root.userDisplayName
+                    size_hint: [1,None]
+                    height: 30
+                Button:
+                    text: 'edit'
+                    size_hint: [1,None]
+                    height: 30
+        
+        GreenUpBarGraph:
+            size_hint: [1,2]
+            canvas:
+                Line:
+                    ellipse: [0,0,20,20]
+            
+        Label:
+            text: "My Groups"
+            color: [0,0,0,1]
+            size_hint: [1,None]
+            height: 30
 
-    AnchorLayout:
-        anchor_x: 'right'
-        anchor_y: 'bottom'
-        Button:
-            size_hint: 0.2, 0.2
-            background_normal: "images/homeUp.png"
-            background_down: "images/homeDown.png"
-            on_release: root.go_home()
+        AnchorLayout:
+            anchor_x: 'right'
+            anchor_y: 'bottom'
+            Button:
+                size_hint: 0.2, 0.1
+                background_normal: "images/homeUp.png"
+                background_down: "images/homeDown.png"
+                on_release: root.go_home()
                 
 <ProfileScreen>:
     canvas.before:

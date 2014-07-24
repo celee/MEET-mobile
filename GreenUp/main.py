@@ -2,8 +2,10 @@ import kivy
 kivy.require('1.8.0')
 
 from kivy.app import App
+from kivy.uix.widget import Widget
 from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition
-from kivy.properties import ObjectProperty, StringProperty
+from kivy.properties import ObjectProperty, StringProperty, NumericProperty
+from kivy.uix.button import Button
 
 from parse_rest.datatypes import Object
 from parse_rest.connection import register
@@ -39,17 +41,15 @@ class LoginScreen(Screen):
             self.error.color = [1,0,0,1]
 
 class HomeScreen(Screen):
-    userDisplayName = ''
+    userDisplayName = StringProperty('Guest', rebind=True)
     
-    def __init__(self, **kwargs):
+    def on_pre_enter(self):
         app = kivy.app.App.get_running_app()
         u = app.user
         if not u.is_authenticated():
             self.manager.current = 'home'
         else:
             self.userDisplayName = u.displayName
-            # make sure we aren't overriding any important functionality
-            super(HomeScreen, self).__init__(**kwargs)
             
     def button_pressed(self, buttonText):
         if buttonText == 'Settings':
@@ -82,6 +82,48 @@ class HomeScreen(Screen):
             self.manager.current = 'fuel'
             
 class SettingsScreen(Screen):
+    userDisplayName = StringProperty('Guest', rebind=True)
+    recyclingThis = NumericProperty(0)
+    recyclingLast = NumericProperty(0)
+    waterThis = NumericProperty(0)
+    waterLast = NumericProperty(0)
+    electricThis = NumericProperty(0)
+    electricLast = NumericProperty(0)
+    fuelThis = NumericProperty(0)
+    fuelLast = NumericProperty(0)
+    groups = []
+    layoutRef = ObjectProperty(0)
+    buttonsAdded = False
+    
+    def on_pre_enter(self):
+        app = kivy.app.App.get_running_app()
+        u = app.user
+        if not u.is_authenticated():
+            self.manager.current = 'home'
+        else:
+            self.userDisplayName = u.displayName
+            # Set all the data variables here!
+            # Fetch the statistics for recycle/water/electric/fuel
+            data = [50,50,50,50,50,50,50,50]            
+            self.recyclingThis = data[0]
+            self.recyclingLast = data[1]
+            self.waterThis = data[2]
+            self.waterLast = data[3]
+            self.electricThis = data[4]
+            self.electricLast = data[5]
+            self.fuelThis = data[6]
+            self.fuelLast = data[7]
+            # Fetch the groups that this user is involved in
+            self.groups = ['Family', 'Friends']
+            
+    def on_enter(self):
+        if self.buttonsAdded:
+            return
+        # add buttons for each group
+        for groupLabel in self.groups:
+            self.layoutRef.add_widget(Button(text=groupLabel, height=30, size_hint=[0.8,None]),1)
+        self.buttonsAdded = True
+    
     def go_home(self):
         self.manager.current = 'home'
         
@@ -112,6 +154,9 @@ class ElectricityScreen(Screen):
 class FuelScreen(Screen):
     def go_home(self):
         self.manager.current = 'home'
+        
+class GreenUpBarGraph(Widget):
+    pass
 
 class GreenUpApp(App):
     user = None
