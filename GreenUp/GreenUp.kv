@@ -184,7 +184,7 @@
     BoxLayout:
         id: boxlay
         orientation: 'vertical'
-        padding: [10,10,20,40]
+        padding: [10,10,10,0]
         spacing: 5
 
         BoxLayout:
@@ -197,8 +197,9 @@
                 Label:
                     color: [0,0,0,1]
                     text: root.userDisplayName
-                    size_hint: [1,None]
+                    size_hint: [1,1]
                     height: 30
+                    font_size: 30
                 Button:
                     text: 'edit'
                     size_hint: [1,None]
@@ -207,6 +208,8 @@
         GreenUpBarGraph:
             size_hint: [1,2]
             canvas:
+                Color:
+                    rgba: 0, 0, 0, 1
                 Line:
                     ellipse: [0,0,20,20]
             
@@ -220,7 +223,7 @@
             anchor_x: 'right'
             anchor_y: 'bottom'
             Button:
-                size_hint: 0.2, 0.1
+                size_hint: [0.3, 1]
                 background_normal: "images/homeUp.png"
                 background_down: "images/homeDown.png"
                 on_release: root.go_home()
@@ -246,7 +249,7 @@
         anchor_x: 'right'
         anchor_y: 'bottom'
         Button:
-            size_hint: 0.2, 0.2
+            size_hint: 0.4, 0.2
             background_normal: "images/homeUp.png"
             background_down: "images/homeDown.png"
             on_release: root.go_home()
@@ -272,7 +275,7 @@
         anchor_x: 'right'
         anchor_y: 'bottom'
         Button:
-            size_hint: 0.2, 0.2
+            size_hint: 0.4, 0.2
             background_normal: "images/homeUp.png"
             background_down: "images/homeDown.png"
             on_release: root.go_home()
@@ -298,7 +301,7 @@
         anchor_x: 'right'
         anchor_y: 'bottom'
         Button:
-            size_hint: 0.2, 0.2
+            size_hint: 0.4, 0.2
             background_normal: "images/homeUp.png"
             background_down: "images/homeDown.png"
             on_release: root.go_home()
@@ -324,7 +327,7 @@
         anchor_x: 'right'
         anchor_y: 'bottom'
         Button:
-            size_hint: 0.2, 0.2
+            size_hint: 0.4, 0.2
             background_normal: "images/homeUp.png"
             background_down: "images/homeDown.png"
             on_release: root.go_home()
@@ -350,7 +353,7 @@
         anchor_x: 'right'
         anchor_y: 'bottom'
         Button:
-            size_hint: 0.2, 0.2
+            size_hint: 0.4, 0.2
             background_normal: "images/homeUp.png"
             background_down: "images/homeDown.png"
             on_release: root.go_home()
@@ -376,7 +379,7 @@
         anchor_x: 'right'
         anchor_y: 'bottom'
         Button:
-            size_hint: 0.2, 0.2
+            size_hint: 0.4, 0.2
             background_normal: "images/homeUp.png"
             background_down: "images/homeDown.png"
             on_release: root.go_home()

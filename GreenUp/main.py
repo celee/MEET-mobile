@@ -121,7 +121,7 @@ class SettingsScreen(Screen):
             return
         # add buttons for each group
         for groupLabel in self.groups:
-            self.layoutRef.add_widget(Button(text=groupLabel, height=30, size_hint=[0.8,None]),1)
+            self.layoutRef.add_widget(Button(text=groupLabel, height=30, size_hint=[1,None]),1)
         self.buttonsAdded = True
     
     def go_home(self):
